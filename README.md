@@ -20,7 +20,8 @@
   引入:import axios from 'axios'
 # mockjs实现本地模拟数据
   安装:npm install mockjs --save-dev
+  <br/>
   安装axios-mock-adapter: npm install mockjs axios-mock-adapter --save-dev
   import Mock from 'mockjs'
-  模拟请求
+  模拟请求 生成代理api地址
   import MockAdapter from 'axios-mock-adapter'
