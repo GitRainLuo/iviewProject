@@ -1,10 +1,11 @@
 <template>
-  <Row>
-    <Col :span="24" class="header">
-      <Col :span="10" class="logo">{{sysName}}</Col>
-      <Col :span="10">
-        <div></div>
-      </Col>
+  <div>
+    <Row>
+      <Col :span="24" class="header">
+        <Col :span="10" class="logo">{{sysName}}</Col>
+        <Col :span="10">
+          <div></div>
+        </Col>
       <Col :span="4" class="user-info">
         <Dropdown>
           <!--利用缓存拿头像-->
@@ -21,8 +22,16 @@
           </DropdownMenu>
         </Dropdown>
       </Col>
-    </Col>
-  </Row>
+      </Col>
+    </Row>
+    <div>
+      <Form>
+        <Button @click="jumpBaiduMap1">百度地图1(js)</Button>
+        <Button @click="jumpBaiduMap2">百度地图2(vue-baidu-map)</Button>
+        <Button @click="jumpBaiduMap3">百度地图</Button>
+      </Form>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -52,6 +61,15 @@
 
                 }
               })
+            },
+            jumpBaiduMap1(){
+              this.$router.push({path:"/map"})
+            },
+            jumpBaiduMap2(){
+              this.$router.push({path:"/baiduMapVue"})
+            },
+            jumpBaiduMap3(){
+                this.$router.push({path:"/bdMap"})
             }
         },
         mounted(){

@@ -6,10 +6,15 @@ import router from './router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import Mock from './mock/mock'
+import BaiduMap from 'vue-baidu-map'
 
 Mock.bootstrap();
 Vue.config.productionTip = false
 Vue.use(iView)
+//使用百度地图
+Vue.use(BaiduMap,{
+  ak:"ii84hSvhldboVVvCM8hEhTEQc1W4shUI"
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

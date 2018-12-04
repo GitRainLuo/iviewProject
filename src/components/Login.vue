@@ -1,23 +1,25 @@
 <template>
-        <!--登录界面-->
-        <Form :model="userForm" ref="userForm" class="form-containter" :rules="formRules">
-          <h3 class="title">登录系统</h3>
-          <FormItem prop="account" class="marginbottom20">
-            <Input type="text" placeholder="请输入账号" v-model="userForm.account" clearable/>
-          </FormItem>
-          <FormItem prop="password" class="marginbottom20">
-            <Input type="password" placeholder="请输入密码" v-model="userForm.password" clearable/>
-          </FormItem>
-          <FormItem prop="email" class="marginbottom20">
-            <Input type="email" placeholder="请输入邮箱" v-model="userForm.email" clearable @keyup.enter.native="handleSubmit"/>
-          </FormItem>
-          <FormItem class="marginbottom20">
-            <Checkbox v-model="isChecked" class="rememberPassword">记住密码</Checkbox>
-          </FormItem>
-          <FormItem class="marginbottom20">
-            <Button type="primary" style="width: 100%" @click="handleSubmit" :logining="logining">登录</Button>
-          </FormItem>
-        </Form>
+  <div>
+    <!--登录界面-->
+    <Form :model="userForm" ref="userForm" class="form-containter" :rules="formRules">
+      <h3 class="title">登录系统</h3>
+      <FormItem prop="account" class="marginbottom20">
+        <Input type="text" placeholder="请输入账号" v-model="userForm.account" clearable/>
+      </FormItem>
+      <FormItem prop="password" class="marginbottom20">
+        <Input type="password" placeholder="请输入密码" v-model="userForm.password" clearable/>
+      </FormItem>
+      <FormItem prop="email" class="marginbottom20">
+        <Input type="email" placeholder="请输入邮箱" v-model="userForm.email" clearable @keyup.enter.native="handleSubmit"/>
+      </FormItem>
+      <FormItem class="marginbottom20">
+        <Checkbox v-model="isChecked" class="rememberPassword">记住密码</Checkbox>
+      </FormItem>
+      <FormItem class="marginbottom20">
+        <Button type="primary" style="width: 100%" @click="handleSubmit" :loading="loading">登录</Button>
+      </FormItem>
+    </Form>
+  </div>
 </template>
 
 <script>
@@ -31,7 +33,7 @@
                 email:'admin@163.com'
               },
               isChecked:true,
-              logining:false,
+              loading:false,
 //              验证
               formRules:{
                   account:[
@@ -52,7 +54,7 @@
                     {
                       required:true,
                       message:"请输入邮箱",
-                      trgger:"blur"
+                      trigger:"blur"
                     },
                     {
                       type:"string",
@@ -60,23 +62,20 @@
 //                      邮箱验证
                       pattern:/^\w+@[a-zA-Z0-9]+\.[a-z]{2,4}$/,
                       message:"邮箱格式不正确",
-                      tigger:"blur"
+                      trigger:"blur"
                     }
                   ]
               }
             }
         },
         methods:{
-            alert:function () {
-              alert(1)
-            },
             handleSubmit:function () {
               this.$refs.userForm.validate((valid) => {
                   if(valid){
-                      this.logining = true
+                      this.loading = true
                       var loginParams = {username:this.userForm.account,password:this.userForm.password,email:this.userForm.email}
                       requestLogin(loginParams).then(data=>{
-                          this.logining = false;
+                          this.loading = false;
                           let {msg,code,user} = data;
                           if(code!=200){
                               //请求失败
