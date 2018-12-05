@@ -47,7 +47,7 @@ export default new Router({
       path:'/',
       name:"导航一",
       component:Home,
-      iconCls:"ios-mail-outline",
+      iconCls:"ios-map-outline",
       children:[
         {
           path:"/map",

@@ -12,7 +12,7 @@
             <DropdownMenu slot="list">
               <DropdownItem>我的消息</DropdownItem>
               <DropdownItem>设置</DropdownItem>
-              <DropdownItem @click="logout">退出</DropdownItem>
+              <DropdownItem @click.native="logout" divided>退出</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Col>
@@ -28,7 +28,8 @@
               <!--name ==> 菜单项的唯一标识-->
               <Submenu :name="index+''">
                 <!--标题-->
-                <template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
+                <!--<template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>-->
+                <template slot="title"><Icon :type="item.iconCls" />{{item.name}}</template>
                 <!--子菜单-->
                 <!--name ==> 子菜单项的唯一标识-->
                 <MenuItem v-for="child in item.children" :name="child.path" :key="child.path" v-if="!child.hidden">{{child.name}}</MenuItem>
