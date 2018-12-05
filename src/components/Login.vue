@@ -98,7 +98,7 @@
                             //缓存user信息
                             sessionStorage.setItem('user',JSON.stringify(user));
                             this.$Message.success(msg)
-                            this.$router.push({path:"/home"})
+                            this.$router.push({path:"/map"})
                           }
                         })
                       }
