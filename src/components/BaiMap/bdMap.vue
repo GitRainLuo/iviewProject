@@ -21,8 +21,8 @@
         <bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true" @locationSuccess="getLocationSuccess" @locationError="getLocationError"></bm-geolocation>
         <bm-marker :position="autoLocationPoint" v-if="initLocation" :tragging="true" animation="BMAP_ANIMATION_BOUNCE" @click="infoWindowOpen">
           <!--<bm-info-window :show="showWindow" @close="infoWindowClose" @open="infoWindowOpen" v-for="(value,key) in currPosition" :key="key">{{key}}:{{value}}</bm-info-window>-->
-          <bm-info-window :show="showWindow" @close="infoWindowClose" @open="infoWindowOpen" v-for="item in currPosition" :key="index">地址:{{item.address}}</bm-info-window>
-          <!--<bm-label v-for="item in currPosition":key="index" :content="'<span>'+'地址:'+'</span>'+'<span>'+item.address+'</span>'" :position="autoLocationPoint" :labelStyle="{fontSize:'12px',lineHeight:'12px',title:'地址'}"/>-->
+          <!--<bm-info-window :show="showWindow" @close="infoWindowClose" @open="infoWindowOpen" v-for="item in currPosition" :key="index">地址:{{item.address}}</bm-info-window>-->
+          <bm-label v-for="item in currPosition":key="index" :content="'<span>'+'地址:'+'</span>'+'<span>'+item.address+'</span>'" :position="autoLocationPoint" :labelStyle="{fontSize:'12px',lineHeight:'12px',title:'地址'}"/>
         </bm-marker>
         <!--<bm-marker v-for="(item,index) in bauduMapList" :key="index" :position="item.address">-->
           <!--<bm-label-->

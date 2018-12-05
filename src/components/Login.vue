@@ -4,13 +4,20 @@
     <Form :model="userForm" ref="userForm" class="form-containter" :rules="formRules">
       <h3 class="title">登录系统</h3>
       <FormItem prop="account" class="marginbottom20">
-        <Input type="text" placeholder="请输入账号" v-model="userForm.account" clearable/>
+        <Input type="text" placeholder="请输入账号" v-model="userForm.account" clearable prefix="ios-person-outline"/>
+        <!--&lt;!&ndash;slot方式&ndash;&gt;-->
+        <!--<Input type="text" placeholder="请输入账号" v-model="userForm.account" clearable>-->
+          <!--<Icon type="ios-person" slot="prefix"/>-->
+        <!--</Input>-->
       </FormItem>
       <FormItem prop="password" class="marginbottom20">
-        <Input type="password" placeholder="请输入密码" v-model="userForm.password" clearable/>
+        <Input type="password" placeholder="请输入密码" v-model="userForm.password"  icon="ios-eye-outline" ref="password" @on-click="showPassword" prefix="ios-lock-outline"/>
+      </FormItem>
+      <FormItem prop="password" class="marginbottom20">
+        <Input type="password" placeholder="请输入密码" v-model="userForm.rePassword"  icon="ios-eye-outline" ref="rePassword" @on-click="showRePassword" prefix="ios-lock-outline"/>
       </FormItem>
       <FormItem prop="email" class="marginbottom20">
-        <Input type="email" placeholder="请输入邮箱" v-model="userForm.email" clearable @keyup.enter.native="handleSubmit"/>
+        <Input type="email" placeholder="请输入邮箱" v-model="userForm.email" clearable @keyup.enter.native="handleSubmit" prefix="ios-mail-outline"/>
       </FormItem>
       <FormItem class="marginbottom20">
         <Checkbox v-model="isChecked" class="rememberPassword">记住密码</Checkbox>
@@ -30,6 +37,7 @@
               userForm:{
                 account:'admin',
                 password:'123456',
+                rePassword:"123456",
                 email:'admin@163.com'
               },
               isChecked:true,
@@ -73,26 +81,50 @@
               this.$refs.userForm.validate((valid) => {
                   if(valid){
                       this.loading = true
-                      var loginParams = {username:this.userForm.account,password:this.userForm.password,email:this.userForm.email}
-                      requestLogin(loginParams).then(data=>{
+                      if(this.userForm.password != this.userForm.rePassword){
+                          this.$Message.error("两次输入密码不一致,请重新输入")
+                          this.loading = false;
+                      }else {
+                        let loginParams = {username:this.userForm.account,password:this.userForm.password,rePassword:this.userForm.rePassword,email:this.userForm.email}
+                        requestLogin(loginParams).then(data=>{
+//                          alert(JSON.stringify(data))
                           this.loading = false;
                           let {msg,code,user} = data;
                           if(code!=200){
-                              //请求失败
+                            //请求失败
                             this.$Message.error(msg)
                           }else {
-                              //成功
+                            //成功
                             //缓存user信息
                             sessionStorage.setItem('user',JSON.stringify(user));
                             this.$Message.success(msg)
                             this.$router.push({path:"/home"})
                           }
-                      })
+                        })
+                      }
                   }else {
                       console.log("error  submit");
                       return false;
                   }
               })
+            },
+            showPassword(){
+                if(this.$refs.password.type == "password"){
+                    this.$refs.password.type = "text"
+                    this.$refs.password.icon = "ios-eye-off"
+                }else {
+                  this.$refs.password.type = "password"
+                  this.$refs.password.icon = "ios-eye-outline"
+                }
+            },
+            showRePassword(){
+              if(this.$refs.rePassword.type == "password"){
+                this.$refs.rePassword.type = "text"
+                this.$refs.rePassword.icon = "ios-eye-off"
+              }else {
+                this.$refs.rePassword.type = "password"
+                this.$refs.rePassword.icon = "ios-eye-outline"
+              }
             }
         }
     }

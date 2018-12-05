@@ -11,7 +11,7 @@ const loginUsers = [
     id:1,
     username:"admin",
     password:"123456",
-    // email:"admin@163.com",
+    email:"admin@163.com",
     name:"admin",
     avatar:'http://47.106.248.123/upload/5a438677084c4a29b22d9c053fce8a3f_avater.gif',
   },
@@ -19,7 +19,7 @@ const loginUsers = [
     id:2,
     username:'jay',
     password:'123456',
-    // email:"jay@163.com",
+    email:"jay@163.com",
     avatar:'http://47.106.248.123/upload/5a438677084c4a29b22d9c053fce8a3f_avater.gif',
     name:'jay'
   },
