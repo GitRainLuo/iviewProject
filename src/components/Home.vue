@@ -94,6 +94,7 @@
             },
         },
         mounted(){
+          console.log(JSON.stringify(this.$router.options.routes))
           //取缓存
           let user = sessionStorage.getItem('user')
           if(user){
@@ -102,6 +103,10 @@
               this.sysUserName = user.name||"";
               this.sysUserAvater = user.avatar||"";
           }
+//          菜单目录权限控制 但是此方法不好
+//          if(this.sysUserName == "admin"){
+//              this.$router.options.routes[2].children[0].hidden = true
+//          }
           this.$nextTick(()=>{
               //页面刷新时menu展开 以及默认的页面
               this.acName = '/map'

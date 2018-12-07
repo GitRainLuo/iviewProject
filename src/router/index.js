@@ -49,11 +49,13 @@ export default new Router({
       name:"导航一",
       component:Home,
       iconCls:"ios-map-outline",
+      hidden:false,
       children:[
         {
           path:"/map",
           name:"地图1",
-          component:map
+          component:map,
+          hidden:false
         },
         {
           path:"/baiduMapVue",
