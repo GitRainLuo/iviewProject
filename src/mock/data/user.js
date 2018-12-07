@@ -29,14 +29,21 @@ const loginUsers = [
 const users = [];
 for(let i = 0;i<86;i++){
   users.push(Mock.mock({
+    //随机生成一个guid
     id:Mock.Random.guid(),
+    //随机生成一个18位身份证号码
+    // id:Mock.Random.id(),
     //随机生成中文名
     name:Mock.Random.cname(),
     //随机生成英文名
     egName:Mock.Random.name(),
-    addr:Mock.mock('@county(true)'),
+    // addr:Mock.mock('@county(true)'),
+    addr:Mock.Random.county(true),
     'age|18-50':1,
+    //birth:Mock.Random.date('yyyy-MM-dd'),
+    //Mock.Random.date() ==> string
     birth:Mock.Random.date(),
+    // age:Mock.Random.now().toString().substring(0,4)- birth.toString().substring(0,4),
     sex:Mock.Random.integer(0,1)
   }))
 }
