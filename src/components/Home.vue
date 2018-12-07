@@ -107,7 +107,9 @@
               this.acName = '/map'
               this.open = ['2']
               this.$router.push({path:'/map'})
+              //手动更新当前选项 需要在nextTick里面调用
               this.$refs.acName.updateActiveName();
+              //手动更新展开的子目录 需要在nextTick里面调用
               this.$refs.acName.updateOpened();
           })
         }

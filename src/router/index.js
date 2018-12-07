@@ -6,7 +6,8 @@ import map from '@/components/Map';
 import Home from '@/components/Home';
 import baiduMap from '@/components/BaiMap/baiduMapVue';
 import bdMap from '@/components/BaiMap/bdMap';
-import test from  '@/components/Test'
+import test from  '@/components/Test';
+import usersTable from '@/components/Table/usersTable'
 
 Vue.use(Router)
 
@@ -51,17 +52,17 @@ export default new Router({
       children:[
         {
           path:"/map",
-          name:"Map",
+          name:"地图1",
           component:map
         },
         {
           path:"/baiduMapVue",
-          name:"baiduMapVue",
+          name:"地图2",
           component:baiduMap
         },
         {
           path:"/bdMap",
-          name:"bdMap",
+          name:"自动定位",
           component:bdMap
         },
       ]
@@ -76,6 +77,11 @@ export default new Router({
           path:"/Test",
           name:"Test",
           component:test
+        },
+        {
+          path:"/usersTable",
+          name:"用户列表",
+          component:usersTable
         }
       ]
     }
