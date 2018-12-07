@@ -29,6 +29,7 @@ const loginUsers = [
 const users = [];
 for(let i = 0;i<86;i++){
   users.push(Mock.mock({
+    //@占位符引用的是Mock.Random里的方法
     //随机生成一个guid
     id:Mock.Random.guid(),
     //随机生成一个18位身份证号码
@@ -42,7 +43,8 @@ for(let i = 0;i<86;i++){
     'age|18-50':1,
     //birth:Mock.Random.date('yyyy-MM-dd'),
     //Mock.Random.date() ==> string
-    birth:Mock.Random.date(),
+    // birth:Mock.Random.date(),
+    birth:"@date()",
     // age:Mock.Random.now().toString().substring(0,4)- birth.toString().substring(0,4),
     sex:Mock.Random.integer(0,1)
   }))
