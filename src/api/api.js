@@ -9,7 +9,8 @@ import axios from 'axios'
 let base = "";
 
 //登录请求
-export const requestLogin = params =>{return axios.post(`${base}/login`,params).then(res=>res.data)}
+// export const requestLogin = params =>{return axios.post(`${base}/login`,params).then(res=>res.data)}
+export const requestLogin = params =>{return axios.post(`${base}/login`,params)}
 //获取用户列表
 export const getUserList = params => {return axios.get(`${base}/user/list`,{params:params});};
 //获取用户列表 分页

@@ -86,7 +86,7 @@
                           this.loading = false;
                       }else {
                         let loginParams = {username:this.userForm.account,password:this.userForm.password,rePassword:this.userForm.rePassword,email:this.userForm.email}
-                        requestLogin(loginParams).then(data=>{
+                        requestLogin(loginParams).then(({data})=>{
 //                          alert(JSON.stringify(data))
                           this.loading = false;
                           let {msg,code,user} = data;
