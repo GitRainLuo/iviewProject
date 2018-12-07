@@ -3,11 +3,14 @@
       <Form style="margin-bottom: 5px">
         <Col span="4">
           <FormItem>
-            <Input v-model="filters.name" placeholder="输入姓名查询" clearable/>
+            <Input v-model="searchCondition.name" placeholder="输入姓名查询" clearable/>
           </FormItem>
         </Col>
         <Col span="2">
           <Button @click="getUsersListPages" style="margin-left: 5px">查询</Button>
+        </Col>
+        <Col span="2">
+        <Button @click="resetSearchCondition">清空</Button>
         </Col>
       </Form>
       <div class="contentAndButton">
@@ -15,7 +18,7 @@
         <Button @click="batchDelete">批量删除</Button>
         <Button @click="addNewUser">新增</Button>
       </div>
-      <Table :columns="table.userColumns" :data="table.users" style="width: 960px" border stripe :loading="loading" @on-selection-change="selectChange"></Table>
+      <Table :columns="table.userColumns" :data="table.users" style="width: 960px" border stripe :loading="loading" @on-selection-change="selectChange" no-data-text="没有数据"></Table>
       <Page :total="table.total" show-elevator show-total show-sizer @on-change="pageChange" @on-page-size-change="pageSizeChange"></Page>
       <!--编辑弹窗-->
       <Modal v-model="isModalShow" title="编辑">
@@ -151,7 +154,7 @@
                     page:1,
                     size:10
                 },
-                filters:{
+                searchCondition:{
                     name:""
                 },
                 loading:false,
@@ -200,7 +203,7 @@
             //获取用户列表
             getUsersList(){
                 let param = {
-                    name:this.filters.name,
+                    name:this.searchCondition.name,
                 };
                 getUserList(param).then(({data})=>{
                     this.table.users = data.users;
@@ -210,7 +213,7 @@
             getUsersListPages(){
                 this.loading = true
                 let param = {
-                    name:this.filters.name,
+                    name:this.searchCondition.name,
                     page:this.table.page,
                     size:this.table.size
                 };
@@ -335,13 +338,17 @@
             },
             //查询
             searchByName(){
-                let param = this.filters.name;
+                let param = this.searchCondition.name;
                 searchByName(param).then(({data})=>{
                     if(data.code == 200){
                         this.table.users = data.users
                     }
                 })
-            }
+            },
+            //清空查询条件
+            resetSearchCondition(){
+                this.searchCondition.name = ""
+            },
         }
     }
 </script>
