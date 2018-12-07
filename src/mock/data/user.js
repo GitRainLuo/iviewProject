@@ -30,7 +30,10 @@ const users = [];
 for(let i = 0;i<86;i++){
   users.push(Mock.mock({
     id:Mock.Random.guid(),
+    //随机生成中文名
     name:Mock.Random.cname(),
+    //随机生成英文名
+    egName:Mock.Random.name(),
     addr:Mock.mock('@county(true)'),
     'age|18-50':1,
     birth:Mock.Random.date(),

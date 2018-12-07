@@ -18,7 +18,7 @@
         <Button @click="batchDelete">批量删除</Button>
         <Button @click="addNewUser">新增</Button>
       </div>
-      <Table :columns="table.userColumns" :data="table.users" style="width: 960px" border stripe :loading="loading" @on-selection-change="selectChange" no-data-text="没有数据"></Table>
+      <Table :columns="table.userColumns" :data="table.users" style="width: 950px" border stripe :loading="loading" @on-selection-change="selectChange" no-data-text="没有数据"></Table>
       <Page :total="table.total" show-elevator show-total show-sizer @on-change="pageChange" @on-page-size-change="pageSizeChange"></Page>
       <!--编辑弹窗-->
       <Modal v-model="isModalShow" title="编辑">
@@ -72,19 +72,25 @@
                       {
                         key:"name",
                         title:"姓名",
-                        width:140,
+                        width:100,
+                        align:"center"
+                      },
+                      {
+                        key:"egName",
+                        title:"英文名",
+                        width:100,
                         align:"center"
                       },
                       {
                         key:"age",
                         title:"年龄",
-                        width:100,
+                        width:70,
                         align:"center"
                       },
                       {
                         key:"sex",
                         title:"性别",
-                        width:100,
+                        width:70,
                         align:"center",
                         render:(h,{row,clomuns,index})=>{
                             return h("div",{},row.sex == '1' ? "男" : "女")
