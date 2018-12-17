@@ -71,25 +71,11 @@
           {
             code:"chrysanthemum",
             name:"菊"
-          },
-          {
-            code:"begonia",
-            name:"秋海棠"
-          },
-          {
-            code:"hydrangea",
-            name:"八仙花"
-          },
-          {
-            code:"azalea",
-            name:"杜鹃"
-          },
-          {
-            code:"gardenia",
-            name:"栀子"
           }
         ],
+        //选中的
         optionsFlowerArr:[],
+        //上次选中的
         oldOptions:[],
         oldFlowerOptions:[],
       }
@@ -208,6 +194,7 @@
           }
         }
 //        this[argOldOption][0] = this[arg]
+        //将本次的数据赋给oldOption作为下次选择时的上一次数据
         if(flag){
           this[argOldOption][0] = this[newArg[0]][newArg[1]]
         }else {
