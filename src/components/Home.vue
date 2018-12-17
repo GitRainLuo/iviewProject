@@ -93,6 +93,19 @@
                   this.$router.push(name)
             },
         },
+        watch:{
+            //侦听路由变化
+            "$route":function (to,from) {
+                console.log(to)
+              console.log(from)
+//              alert("去to:"+JSON.stringify(to))
+//              alert("从from:"+JSON.stringify(from))
+            }
+//            $route(to,from){
+//              alert("去to:"+JSON.stringify(to))
+//              alert("从from:"+JSON.stringify(from))
+//            }
+        },
         mounted(){
           console.log(JSON.stringify(this.$router.options.routes))
           //取缓存
