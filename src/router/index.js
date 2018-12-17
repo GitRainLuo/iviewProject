@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login';
-import Form from '@/components/form/Form';
+import form from '@/components/form/Form';
 import map from '@/components/Map';
 import Home from '@/components/Home';
 import baiduMap from '@/components/BaiMap/baiduMapVue';
 import bdMap from '@/components/BaiMap/bdMap';
 import test from  '@/components/Test';
 import usersTable from '@/components/Table/usersTable'
+import selectParent from "@/components/form/SelectParent"
+import selectForm from "@/components/form/SelectForm"
 
 Vue.use(Router)
 
@@ -84,6 +86,29 @@ export default new Router({
           path:"/usersTable",
           name:"用户列表",
           component:usersTable
+        }
+      ]
+    },
+    {
+      path:"/",
+      name:"导航三",
+      component:Home,
+      iconCls:"ios-mail-outline",
+      children:[
+        {
+          path:"/SelectParent",
+          name:"下拉框",
+          component:selectParent
+        },
+        {
+          path:"/SelectForm",
+          name:"封装的select",
+          component:selectForm
+        },
+        {
+          path:"/Form",
+          name:"tree",
+          component:form
         }
       ]
     }
