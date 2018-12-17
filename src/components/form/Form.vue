@@ -1,14 +1,27 @@
 <template>
     <div>
-       <Col span="6">
-        <Tree :data="data"></Tree>
-       </Col>
+      <Form :label-width="75" label-position="right">
+        <FormItem label="树状:">
+          <Col span="6">
+            <Tree :data="data" @on-select-change="getTreeData"></Tree>
+          </Col>
+        </FormItem>
+        <FormItem label="值:">
+          <Col span="6">
+            <Input v-model="treeData" readonly :placeholder="'name:'+$router.options.routes[1].name"/>
+          </Col>
+        </FormItem>
+       <FormItem>
+         <Col span="1">
+          <Button @click="showModal">上传</Button>
+         </Col>
+       </FormItem>
+      </Form>
       <!--<Col span="6">-->
         <!--<Upload action="//jsonplaceholder.typicode.com/posts/">-->
           <!--<Button>上传</Button>-->
         <!--</Upload>-->
       <!--</Col>-->
-      <Button @click="showModal">上传</Button>
       <Modal v-model="isModalShow" title="上传">
         <Upload action="//jsonplaceholder.typicode.com/posts/" :before-upload="beforeUpload"
         >
@@ -27,6 +40,7 @@
     export default{
         data () {
             return {
+                treeData:"",
                 title1:"测试",
                 isModalShow:false,
                 file:"",
@@ -34,11 +48,11 @@
                 data:[
                   {
                     code: 'parent 1',
-                    expand: true,
+                    expand: false,
                     children: [
                       {
                         code: 'parent 1-1',
-                        expand: true,
+                        expand: false,
                         children: [
                           {
                             code: 'leaf 1-1-1'
@@ -50,7 +64,7 @@
                       },
                       {
                         title: 'parent 1-2',
-                        expand: true,
+                        expand: false,
                         children: [
                           {
                             title: 'leaf 1-2-1'
@@ -85,6 +99,12 @@
       methods:{
         showModal(){
             this.isModalShow = true
+        },
+        //获取选中的树的节点的值
+        getTreeData(val){
+            //val是一个数组
+//            alert(JSON.stringify(val))
+            this.treeData = val[0].title
         },
         beforeUpload(file){
             console.log(file)
