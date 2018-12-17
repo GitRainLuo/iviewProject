@@ -11,11 +11,13 @@
 <script>
   export default{
     props:{
+      //父组件传递过来的 选中的
       optionsArr:{
         type:Array,
         require:true,
         default:()=>[]
       },
+      //数据
       optionList:{
         type:Object
       },
@@ -30,6 +32,7 @@
     },
     methods:{
       emitAllSelectFruits(val){
+        //触发父组件事件
         this.$emit("on-change",val)
       }
     }
