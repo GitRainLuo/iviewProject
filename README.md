@@ -1,4 +1,4 @@
-select-costum# iviewProject
+# iviewProject
 # vue+vue-router
 # scss
   npm install node-sass --sava-dev
@@ -36,5 +36,5 @@ select-costum# iviewProject
   模拟请求 生成代理api地址
   <br/>
   import MockAdapter from 'axios-mock-adapter'
-#基于iview 封装select全选与取消全选组件
+# 基于iview 封装select全选与取消全选组件
   <select-costum></select-costum>
