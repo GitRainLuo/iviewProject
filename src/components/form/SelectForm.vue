@@ -71,6 +71,22 @@
           {
             code:"chrysanthemum",
             name:"菊"
+          },
+          {
+            code:"begonia",
+            name:"秋海棠"
+          },
+          {
+            code:"hydrangea",
+            name:"八仙花"
+          },
+          {
+            code:"azalea",
+            name:"杜鹃"
+          },
+          {
+            code:"gardenia",
+            name:"栀子"
           }
         ],
         //选中的
