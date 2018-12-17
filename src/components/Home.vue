@@ -171,9 +171,10 @@
       padding: 10px;
       .breadcrumb-container{
         .title{
-          width: 100px;
+          width: 200px;
           font-size: 20px;
           float: left;
+          text-align: left;
         }
         .breadcrumb-inner{
           float: right;
