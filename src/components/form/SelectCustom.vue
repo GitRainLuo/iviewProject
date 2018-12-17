@@ -3,8 +3,8 @@
     <Select v-model="optionsArr" @on-change="emitAllSelectFruits" placeholder="请选择" multiple>
       <Option v-for="item in optionList" :value="item.code" :key="item.code">{{item.name}}</Option>
     </Select>
-    <div>{{optionsArr}}</div>
-    <div>list:{{optionList}}</div>
+    <div>选中的:{{optionsArr}}</div>
+    <div>数据list:{{optionList}}</div>
   </div>
 </template>
 
