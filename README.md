@@ -37,4 +37,4 @@
   <br/>
   import MockAdapter from 'axios-mock-adapter'
 # 基于iview 封装select全选与取消全选组件
-  组件:"'<'select-costum'>''<'/select-costum>"
+  组件:"'<select-costum></select-costum>"
