@@ -44,3 +44,5 @@
 npm install -S xlsx //电子表格格式的解析器
   <br/>
 npm install -D script-loader //将js挂在在全局下
+<br/>
+修改Export2Excel.js中require('script-loader!../../assets/js/Blob') ==> 相对路径
