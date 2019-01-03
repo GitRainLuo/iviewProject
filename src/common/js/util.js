@@ -36,5 +36,14 @@ export default {
         }
       })
     }
+  },
+
+  //转换成数组
+  cutValue(target,name){
+    let arr = [];
+    for(let i = 1;i< target.length;i++){
+      arr.push(target[i][name])
+    }
+    return arr
   }
 }

@@ -17,6 +17,7 @@
         <span class="content">共有<span class="colorBlue">{{table.total}}</span>条数据</span>
         <Button @click="batchDelete">批量删除</Button>
         <Button @click="addNewUser">新增</Button>
+        <Button @click="exportExcel">导出excel</Button>
       </div>
       <Table :columns="table.userColumns" :data="table.users" style="width: 950px" border stripe :loading="loading" @on-selection-change="selectChange" no-data-text="没有数据"></Table>
       <Page :total="table.total" show-elevator show-total show-sizer @on-change="pageChange" @on-page-size-change="pageSizeChange"></Page>
@@ -355,10 +356,33 @@
             resetSearchCondition(){
                 this.searchCondition.name = ""
             },
+            //导出
+            exportExcel(){
+                require.ensure([],()=>{
+                    //这个地址和页面的位置相关，这个地址是Export2Excel.js相对于页面的相对位置
+                    const {export_json_to_excel} = require("../../assets/js/Export2Excel");
+                    //util.cutValue 将tHeader和filterVal 的值转成数组从而生成表格
+                    //这个是表头名称 可以是iveiw表格中表头属性的title的数组
+                    const tHeader = util.cutValue(this.table.userColumns,"title")
+                    //与表格数据配合 可以是iview表格中的key的数组
+                    const filterVal = util.cutValue(this.table.userColumns,"key")
+                    const list = this.table.users
+                    const data = this.formatJson(filterVal,list)
+                    export_json_to_excel(tHeader,data,"用户列表")
+                })
+            },
+            formatJson(filterVal,jsonData){
+                return jsonData.map(v => filterVal.map(j => v[j]))
+            },
         }
     }
 </script>
-
+<!--
+安装相关依赖
+npm install -S file-saver //用来生成文件的web应用程序
+npm install -S xlsx //电子表格格式的解析器
+npm install -D script-loader //将js挂在在全局下
+-->
 <style lang="scss" scoped>
  .contentAndButton{
    text-align: left;
